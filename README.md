@@ -1,4 +1,4 @@
-# clock
+# clock (Live @ https://g-h-0-s-t.github.io/clock/)
 A nice bedside clock.  
 Run it as a **clock.js** as a browser bookmark.  
 Or load **index.html** directly in your browser.
