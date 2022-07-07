@@ -1,2 +1,3 @@
 # clock
-A nice bedside clock.
+A nice bedside clock.  
+Run it as a browser bookmark.
