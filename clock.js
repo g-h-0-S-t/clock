@@ -2,12 +2,12 @@ javascript: ((window) => {
     let clockCSS = document.createElement("STYLE");
     clockCSS.id = "clockCSS";
     clockCSS.innerHTML =
-        "body {background-color: #0a0a0a; color: #c3015c; font-family: 'Gill Sans', sans-serif; text-align: center;}" +
-        "#clock {display: flex; align-items: center; justify-content: center; position: fixed; width: 100%; height: 100%; text-align: center; margin: 0 auto}" +
-        "#clockTable {font-size: 12vw;}" +
-        "#time {text-align: center; font-size: 2em;}" +
-        "#date {text-align: center; font-size: 0.5em;}" +
-        "#seconds {font-size: 0.14em;}";
+        "body {background-color: #0a0a0a !important; color: #c3015c !important; font-family: 'Gill Sans', sans-serif !important; text-align: center !important;}" +
+        "#clock {display: flex !important; align-items: center !important; justify-content: center !important; position: fixed !important; width: 100% !important; height: 100% !important; text-align: center !important; margin: 0 auto !important;}" +
+        "#clockTable {font-size: 12vw !important;}" +
+        "#time {text-align: center !important; font-size: 2em !important;}" +
+        "#date {text-align: center !important; font-size: 0.5em !important;}" +
+        "#seconds {font-size: 0.14em !important;}";
     window.document.head.appendChild(clockCSS);
     window.document.body.innerHTML =
         "<div id = 'clock'></div>";
@@ -72,7 +72,11 @@ javascript: ((window) => {
             ", " +
             year +
             "</div></td></tr></table>";
-        if (!window.document.head.getElementsByTagName("title")[0]) {
+        if (window.document.head.getElementsByTagName("TITLE")[0]) {
+            let clockTitle = window.document.head.getElementsByTagName("TITLE")[0];
+            clockTitle.id = "clockTitle";
+        }
+        else {
             let clockTitle = document.createElement("TITLE");
             clockTitle.id = "clockTitle";
             window.document.head.appendChild(clockTitle);
