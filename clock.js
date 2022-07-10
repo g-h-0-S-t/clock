@@ -14,9 +14,21 @@ javascript: ((window) => {
         "#date {text-align: center !important; font-size: 0.5em !important;}" +
         "#devMsg {text-align: center !important; font-weight: bold !important; font-size: 2rem !important; position: fixed !important; top: 1rem !important; left: 0 !important; right: 0 !important; z-index: 1 !important;}";
     window.document.head.appendChild(clockCSS);
-    window.document.body.innerHTML = "<div id = 'devMsg'>" + devMsg + "<a target='_blank' href = " + srcCodeLink + ">" + srcCodeLink + "</a>.<br>Go <a href = '#' onclick = 'openFullscreen();'>fullscreen</a>!</div>";
-    window.document.body.innerHTML += "<div id = 'clock'></div>";
+    window.document.body.innerHTML = "<div id = 'devMsg'>" + devMsg + "<a target='_blank' href = " + srcCodeLink + ">" + srcCodeLink + "</a>.<br>Go <a href = '#' onclick = 'openFullscreen();'>fullscreen</a> or <a href = '#' onclick = 'hideMe()'>hide</a> this message!</div>";
+    window.document.body.innerHTML += "<div id = 'clock' onclick = 'openFullscreen();'></div>";
     let clock = window.document.getElementById("clock");
+    window.openFullscreen = () => {
+        if (clock) {
+            if (clock.requestFullscreen) {
+                clock.requestFullscreen();
+            } else if (clock.webkitRequestFullscreen) { /* Safari */
+                clock.webkitRequestFullscreen();
+            } else if (clock.msRequestFullscreen) { /* IE11 */
+                clock.msRequestFullscreen();
+            }
+        }
+    };
+    window.hideMe = () => document.getElementById("devMsg").style.display = "none";
     window.setInterval(() => {
         let currentDate = new window.Date();
         let hours =
@@ -77,7 +89,6 @@ javascript: ((window) => {
             ", " +
             year +
             "</div></td></tr></table>";
-        window.document.getElementById("clockTable").addEventListener("click", openFullscreen);
         if (window.document.head.getElementsByTagName("TITLE")[0]) {
             let clockTitle = window.document.head.getElementsByTagName("TITLE")[0];
             clockTitle.id = "clockTitle";
@@ -92,17 +103,4 @@ javascript: ((window) => {
             hours + ":" + minutes + ":" + seconds + " " + meridian +
             " (" + day + " " + month.substring(0, 3) + " " + currentDate.toLocaleDateString('en', { year: '2-digit' }) + ")";
     }, 1);
-    let openFullscreen = () => {
-        if (clock) {
-            if (clock.requestFullscreen) {
-                clock.requestFullscreen();
-            } else if (clock.webkitRequestFullscreen) { /* Safari */
-                clock.webkitRequestFullscreen();
-            } else if (clock.msRequestFullscreen) { /* IE11 */
-                clock.msRequestFullscreen();
-            }
-        }
-    };
-    clock.addEventListener("click", openFullscreen);
-    return window.openFullscreen = openFullscreen;
 })(window);
