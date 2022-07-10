@@ -16,6 +16,8 @@ javascript: ((window) => {
         "#date {text-align: center; font-size: 0.5em;}" +
         "#seconds {font-size: 0.14em;}" +
         "</style>";
+    window.document.body.innerHTML =
+        "<div id = 'clock'></div>";
     window.setInterval(() => {
         let currentDate = new window.Date();
         let hours =
@@ -64,8 +66,8 @@ javascript: ((window) => {
         ];
         let month = monthArray[currentDate.getMonth()];
         let year = currentDate.getFullYear();
-        window.document.body.innerHTML =
-            "<div id = 'clock'><table id ='clockTable'><tr><td><div id = 'time'>" +
+        window.document.getElementById("clock").innerHTML =
+            "<table id ='clockTable'><tr><td><div id = 'time'>" +
             time +
             "</div></td></tr><tr><td><div id = 'date'>" +
             dayName +
@@ -75,6 +77,19 @@ javascript: ((window) => {
             day +
             ", " +
             year +
-            "</div></td></tr></table></div>";
+            "</div></td></tr></table>";
     }, 1);
+    var clock = window.document.getElementById("clock");
+    let openFullscreen = () => {
+        if (clock) {
+            if (clock.requestFullscreen) {
+                clock.requestFullscreen();
+            } else if (clock.webkitRequestFullscreen) { /* Safari */
+                clock.webkitRequestFullscreen();
+            } else if (clock.msRequestFullscreen) { /* IE11 */
+                clock.msRequestFullscreen();
+            }
+        }
+    };
+    clock.addEventListener("click", openFullscreen);
 })(window);
