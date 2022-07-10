@@ -1,23 +1,17 @@
 javascript: ((window) => {
-    let width =
-        window.innerWidth ||
-        window.document.documentElement.clientWidth ||
-        window.document.body.clientWidth;
-    let height =
-        window.innerHeight ||
-        window.document.documentElement.clientHeight ||
-        window.document.body.clientHeight;
-    window.document.head.innerHTML =
-        "<style>" +
+    let clockCSS = document.createElement("STYLE");
+    clockCSS.id = "clockCSS";
+    clockCSS.innerHTML =
         "body {background-color: #0a0a0a; color: #c3015c; font-family: 'Gill Sans', sans-serif; text-align: center;}" +
         "#clock {display: flex; align-items: center; justify-content: center; position: fixed; width: 100%; height: 100%; text-align: center; margin: 0 auto}" +
         "#clockTable {font-size: 12vw;}" +
         "#time {text-align: center; font-size: 2em;}" +
         "#date {text-align: center; font-size: 0.5em;}" +
-        "#seconds {font-size: 0.14em;}" +
-        "</style>";
+        "#seconds {font-size: 0.14em;}";
+    window.document.head.appendChild(clockCSS);
     window.document.body.innerHTML =
         "<div id = 'clock'></div>";
+    let clock = window.document.getElementById("clock");
     window.setInterval(() => {
         let currentDate = new window.Date();
         let hours =
@@ -66,7 +60,7 @@ javascript: ((window) => {
         ];
         let month = monthArray[currentDate.getMonth()];
         let year = currentDate.getFullYear();
-        window.document.getElementById("clock").innerHTML =
+        clock.innerHTML =
             "<table id ='clockTable'><tr><td><div id = 'time'>" +
             time +
             "</div></td></tr><tr><td><div id = 'date'>" +
@@ -78,8 +72,16 @@ javascript: ((window) => {
             ", " +
             year +
             "</div></td></tr></table>";
+        if (!window.document.head.getElementsByTagName("title")[0]) {
+            let clockTitle = document.createElement("TITLE");
+            clockTitle.id = "clockTitle";
+            window.document.head.appendChild(clockTitle);
+        }
+        window.document.getElementById("clockTitle").textContent =
+            dayName.substring(0, 3) + " " +
+            hours + ":" + minutes + ":" + seconds + " " + meridian +
+            " (" + day + " " + month.substring(0, 3) + " " + currentDate.toLocaleDateString('en', { year: '2-digit' }) + ")";
     }, 1);
-    var clock = window.document.getElementById("clock");
     let openFullscreen = () => {
         if (clock) {
             if (clock.requestFullscreen) {
