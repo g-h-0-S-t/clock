@@ -102,8 +102,5 @@ javascript: ((window) => {
             dayName.substring(0, 3) + " " +
             hours + ":" + minutes + ":" + seconds + " " + meridian +
             " (" + day + " " + month.substring(0, 3) + " " + currentDate.toLocaleDateString('en', { year: '2-digit' }) + ")";
-        // window.document.body.querySelectorAll("*:not(a)").forEach((v, i, a) => {
-        //     v.setAttribute("onclick", "openFullscreen();");
-        // });
     }, 1);
 })(window);
