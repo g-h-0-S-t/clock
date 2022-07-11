@@ -42,7 +42,7 @@ javascript: ((window) => {
                 ? currentDate.getHours() - 12
                 : currentDate.getHours();
         let meridian = currentDate.getHours() - 12 > 0 ? "PM" : "AM";
-        hours = hours < 10 ? "0" + hours : hours;
+        hours = hours == 0 ? 12 : hours < 10 ? "0" + hours : hours;
         let minutes = currentDate.getMinutes();
         minutes = minutes < 10 ? "0" + minutes : minutes;
         let seconds = currentDate.getSeconds();
