@@ -120,15 +120,17 @@ javascript: ((window) => {
             previousHour = hours;
         }
         else if ((hours - 1 == previousHour) || (hours == 1 && previousHour == 12)) {
-            previousHour = hours;
             hoursSound.currentTime = 0;
             hoursSound.loop = true;
             for (var chimes = 1; chimes <= hours; chimes++) {
                 hoursSound.play();
                 setTimeout(() => {
-                    hoursSound.pause();
-                    hoursSound.currentTime = 0;
-                }, hours * 4000); /** audio length is 4 seconds */
+                    if (chimes === hours) {
+                        hoursSound.pause();
+                        hoursSound.currentTime = 0;
+                        previousHour = hours;
+                    }
+                }, hours * 1000);
 
             }
         }
