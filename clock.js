@@ -121,7 +121,9 @@ javascript: ((window) => {
         }
         else if ((hours - 1 == previousHour) || (hours == 1 && previousHour == 12)) {
             previousHour = hours;
-            hoursSound.play();
+            for (let chimes = 1; chimes <= hours; chimes++) {
+                hoursSound.play();
+            }
         }
     }, 1000);
 })(window);
