@@ -121,8 +121,15 @@ javascript: ((window) => {
         }
         else if ((hours - 1 == previousHour) || (hours == 1 && previousHour == 12)) {
             previousHour = hours;
-            for (let chimes = 1; chimes <= hours; chimes++) {
+            hoursSound.currentTime = 0;
+            hoursSound.loop = true;
+            for (var chimes = 1; chimes <= hours; chimes++) {
                 hoursSound.play();
+                setTimeout(() => {
+                    hoursSound.pause();
+                    hoursSound.currentTime = 0;
+                }, hours * 4000); /** audio length is 4 seconds */
+
             }
         }
     }, 1000);
