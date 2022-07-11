@@ -1,8 +1,8 @@
 javascript: ((window) => {
     /** initialize seconds hand ticking sound */
-    let secondsSound = new Audio("https://cdn.freesound.org/previews/534/534094_11830391-lq.mp3");
+    let secondsSound = new Audio("/audio/seconds.mp3");
     /** initialize hours hand ticking sound */
-    let hoursSound = new Audio("https://dm0qx8t0i9gc9.cloudfront.net/previews/audio/BsTwCwBHBjzwub4i4/anvil-high-pitched-ting_NWM.mp3");
+    let hoursSound = new Audio("/audio/hours.mp3");
     let previousHour = false;
     let devMsg = "Made with <3 by Cyberbatman.\nGet the code @ ";
     let srcCodeLink = "https://github.com/g-h-0-S-t/clock";
