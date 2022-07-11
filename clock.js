@@ -1,4 +1,9 @@
 javascript: ((window) => {
+    /** initialize seconds hand ticking sound */
+    let secondsSound = new Audio("https://cdn.freesound.org/previews/534/534094_11830391-lq.mp3");
+    /** initialize hours hand ticking sound */
+    let hoursSound = new Audio("https://dm0qx8t0i9gc9.cloudfront.net/previews/audio/BsTwCwBHBjzwub4i4/anvil-high-pitched-ting_NWM.mp3");
+    let previousHour = false;
     let devMsg = "Made with <3 by Cyberbatman.\nGet the code @ ";
     let srcCodeLink = "https://github.com/g-h-0-S-t/clock";
     window.console.info(devMsg + srcCodeLink);
@@ -41,9 +46,11 @@ javascript: ((window) => {
         minutes = minutes < 10 ? "0" + minutes : minutes;
         let seconds = currentDate.getSeconds();
         seconds = seconds < 10 ? "0" + seconds : seconds;
+        let timeDivider = ((seconds % 2 === 0) ? "<span>:</span>" : "<span>&nbsp;</span>");
+        let timeDividerForTitle = ((seconds % 2 === 0) ? "/" : "\\");
         let time =
             hours +
-            ":" +
+            timeDivider +
             minutes +
             "<span id = 'seconds'>" +
             seconds +
@@ -100,7 +107,17 @@ javascript: ((window) => {
         }
         window.document.getElementById("clockTitle").textContent =
             dayName.substring(0, 3) + " " +
-            hours + ":" + minutes + ":" + seconds + " " + meridian +
+            hours + timeDividerForTitle + minutes + timeDividerForTitle + seconds + " " + meridian +
             " (" + day + " " + month.substring(0, 3) + " " + currentDate.toLocaleDateString('en', { year: '2-digit' }) + ")";
-    }, 1);
+        /** seconds hand ticking sound */
+        secondsSound.play();
+        /** hours hand ticking sound */
+        if (previousHour === false) {
+            previousHour = hours;
+        }
+        else if ((hours - 1 == previousHour) || (hours == 1 && previousHour == 12)) {
+            previousHour = hours;
+            hoursSound.play();
+        }
+    }, 1000);
 })(window);
