@@ -14,7 +14,7 @@ javascript: ((window) => {
         "a {color: #0a95ff !important;}" +
         "#clock {display: flex !important; align-items: center !important; justify-content: center !important; position: fixed !important; width: 100% !important; height: 100% !important; text-align: center !important; margin: 0 auto !important;}" +
         "#clockTable {font-size: 12vw !important;}" +
-        "#time {text-align: center !important; font-size: 1.9em !important;}" +
+        "#time {text-align: center !important; font-size: 1.8em !important;}" +
         "#seconds {display: inline-block !important; width: 1.12em !important; font-size: 0.14em !important; text-align: left !important;}" +
         "#meridian {display: inline-block !important; width: fit-content !important; font-size: 1em !important; text-align: right !important;}" +
         "#timeDivider {display: inline-block !important; width: 0.27em !important; font-size: 1em !important;}" +
