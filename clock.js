@@ -3,7 +3,6 @@ javascript: ((window) => {
     let secondsSound = new Audio("audio/seconds.mp3");
     /** initialize hours hand ticking sound */
     let hoursSound = new Audio("audio/hours.mp3");
-    let previousHour = false;
     let devMsg = "Made with <3 by Cyberbatman.\nGet the code @ ";
     let srcCodeLink = "https://github.com/g-h-0-S-t/clock";
     window.console.info(devMsg + srcCodeLink);
@@ -116,23 +115,13 @@ javascript: ((window) => {
         /** seconds hand ticking sound */
         secondsSound.play();
         /** hours hand ticking sound */
-        if (previousHour === false) {
-            previousHour = hours;
-        }
-        else if ((hours - 1 == previousHour) || (hours == 1 && previousHour == 12)) {
-            hoursSound.currentTime = 0;
+        if (seconds == 0 && minutes == 0) {
             hoursSound.loop = true;
-            for (var chimes = 1; chimes <= hours; chimes++) {
-                hoursSound.play();
-                setTimeout(() => {
-                    if (chimes === hours) {
-                        hoursSound.pause();
-                        hoursSound.currentTime = 0;
-                        previousHour = hours;
-                    }
-                }, hours * 1000);
-
-            }
+            hoursSound.play();
+            setTimeout(() => {
+                hoursSound.pause();
+                hoursSound.currentTime = 0;
+            }, hours * 1000);
         }
     }, 1000);
 })(window);
