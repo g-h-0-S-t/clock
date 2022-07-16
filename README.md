@@ -3,7 +3,7 @@ A nice bedside clock.
 Run **clock.js** as a browser bookmark.  
 Or visit https://g-h-0-s-t.github.io/clock/  
 **Note:** Click the background to go full-screen.  
-**Updates:** 
+**Updates:**
 * Added second ticks and hour chimes.  
 * Added sun (6am - 6pm) & moon.  
 
