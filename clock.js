@@ -16,7 +16,7 @@ javascript: ((window) => {
         "#time {text-align: center !important; font-size: 2em !important;}" +
         "#seconds {display: inline-block !important; width: 1.12em !important; font-size: 0.14em !important; text-align: left !important;}" +
         "#meridian {display: inline-block !important; width: fit-content !important; font-size: 0.5em !important; text-align: right !important;}" +
-        "#celestial > img {height: 10rem !important;}" +
+        "#celestial > img {height: 0.9em !important;}" +
         "#timeDivider {display: inline-block !important; width: 0.27em !important; font-size: 0.5em !important;}" +
         "#date {text-align: center !important; font-size: 0.5em !important;}" +
         "#devMsg {text-align: center !important; font-weight: bold !important; font-size: 2rem !important; position: fixed !important; top: 1rem !important; left: 0 !important; right: 0 !important; z-index: 1 !important;}";
