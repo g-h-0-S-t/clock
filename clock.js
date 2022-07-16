@@ -1,8 +1,8 @@
 javascript: ((window) => {
     /** initialize seconds hand ticking sound */
-    let secondsSound = new Audio("audio/seconds.mp3");
+    let secondsSound = new Audio("audios/seconds.mp3");
     /** initialize hours hand ticking sound */
-    let hoursSound = new Audio("audio/hours.mp3");
+    let hoursSound = new Audio("audios/hours.mp3");
     let devMsg = "Made with <3 by Cyberbatman.\nGet the code @ ";
     let srcCodeLink = "https://github.com/g-h-0-S-t/clock";
     window.console.info(devMsg + srcCodeLink);
@@ -16,6 +16,7 @@ javascript: ((window) => {
         "#time {text-align: center !important; font-size: 2em !important;}" +
         "#seconds {display: inline-block !important; width: 1.12em !important; font-size: 0.14em !important; text-align: left !important;}" +
         "#meridian {display: inline-block !important; width: fit-content !important; font-size: 0.5em !important; text-align: right !important;}" +
+        "#celestial > img {height: 10rem !important;}" +
         "#timeDivider {display: inline-block !important; width: 0.27em !important; font-size: 0.5em !important;}" +
         "#date {text-align: center !important; font-size: 0.5em !important;}" +
         "#devMsg {text-align: center !important; font-weight: bold !important; font-size: 2rem !important; position: fixed !important; top: 1rem !important; left: 0 !important; right: 0 !important; z-index: 1 !important;}";
@@ -42,6 +43,8 @@ javascript: ((window) => {
                 ? currentDate.getHours() - 12
                 : currentDate.getHours();
         let meridian = currentDate.getHours() - 12 > 0 ? "PM" : "AM";
+        /** moon -> 7pm to 5am ; sun -> 6am to 6pm */
+        let celestial = (currentDate.getHours() - 12 > 6 || currentDate.getHours() < 6) ? "moon.png" : "sun.png";
         hours = hours == 0 ? 12 : hours < 10 ? "0" + hours : hours;
         let minutes = currentDate.getMinutes();
         minutes = minutes < 10 ? "0" + minutes : minutes;
@@ -57,6 +60,7 @@ javascript: ((window) => {
             seconds +
             "</div>" +
             "<div id = 'meridian'>" +
+            "<div id='celestial'><img src='images/" + celestial + "'></div>" +
             meridian +
             "</div>";
         let day = currentDate.getDate();
